@@ -1,39 +1,45 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
+import doc1 from '../assets/img/doc1.jpg';
+import doc2 from '../assets/img/doc2.jpg';
+import doc3 from '../assets/img/doc3.jpg';
+import doc4 from '../assets/img/doc4.jpg';
+import doc5 from '../assets/img/doc5.jpg';
+import doc6 from '../assets/img/doc6.jpg';
 
 const Doctors = () => {
   const data = [
     {
-      img: "/src/assets/img/doc1.jpg",
+      img: doc1,
       name: "Dr. Serena Mitchell",
       specialties: "Orthopedic Surgeon",
     },
     {
-      img: "/src/assets/img/doc2.jpg",
+      img: doc2,
       name: "Dr. Julian Bennett",
       specialties: "Cardiologist",
     },
     {
-      img: "/src/assets/img/doc3.jpg",
+      img: doc3,
       name: "Dr. Camila Rodriguez",
       specialties: "Pediatrician",
     },
     {
-      img: "/src/assets/img/doc4.jpg",
+      img: doc4,
       name: "Dr. Victor Nguyen",
       specialties: "Neurologist",
     },
     {
-      img: "/src/assets/img/doc5.jpg",
+      img: doc5,
       name: "Dr. Ethan Carter",
       specialties: "Dermatologist",
     },
     {
-      img: "/src/assets/img/doc6.jpg",
+      img: doc6,
       name: "Dr. Olivia Martinez",
       specialties: "Ophthalmologist",
     },
@@ -79,15 +85,14 @@ const Doctors = () => {
   };
 
   return (
-    <div className=" min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-16">
+    <div className="flex flex-col justify-center lg:px-32 py-10 px-4 sm:px-8 lg:py-20 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
       <div className=" flex flex-col items-center lg:flex-row justify-between mb-10 lg:mb-0">
         <div>
           <h1 className=" text-4xl font-semibold text-center lg:text-start">
             Our Doctors
           </h1>
           <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+            To ensure the best assistance and personal consultation, we have a skilled team of trusted doctors.
           </p>
         </div>
         <div className="flex gap-5 mt-4 lg:mt-0">
@@ -109,7 +114,7 @@ const Doctors = () => {
         <Slider ref={slider} {...settings}>
           {data.map((e, index) => (
             <div
-              className="h-[350px] text-black rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] mb-2 cursor-pointer"
+              className="h-[350px] rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] mb-2 cursor-pointer bg-backgroundColor"
               key={index}
             >
               <div>
@@ -120,7 +125,7 @@ const Doctors = () => {
                 />
               </div>
 
-              <div className=" flex flex-col justify-center items-center">
+              <div className="flex flex-col justify-center items-center">
                 <h1 className=" font-semibold text-xl pt-4">{e.name}</h1>
                 <h3 className=" pt-2">{e.specialties}</h3>
               </div>

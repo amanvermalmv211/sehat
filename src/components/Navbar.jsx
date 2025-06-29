@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-scroll";
-import Button from "../layouts/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Contact from "../models/Contact";
 
@@ -26,12 +25,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" fixed w-full z-10 text-white">
+    <div className=" fixed w-full z-50 text-white">
       <div>
-        <div className=" flex flex-row justify-between p-5 md:px-32 px-5 bg-backgroundColor shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+        <div className=" flex flex-row justify-between p-2 md:px-32 px-5 bg-backgroundColor shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
           <div className=" flex flex-row items-center cursor-pointer">
             <Link to="home" spy={true} smooth={true} duration={500}>
-              <h1 className=" text-2xl font-semibold">WellnessVista.</h1>
+              <h1 className=" text-2xl font-semibold"><span className="text-yellow-400">S</span>ehat</h1>
             </Link>
           </div>
 
@@ -46,40 +45,49 @@ const Navbar = () => {
               Home
             </Link>
             <Link
+              to="working"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+            >
+              Working
+            </Link>
+            <Link
+              to="features"
+              spy={true}
+              smooth={true}
+              duration={500}
+              className=" hover:text-hoverColor transition-all cursor-pointer"
+            >
+              Features
+            </Link>
+            <Link
               to="about"
               spy={true}
               smooth={true}
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              About Us
+              About
             </Link>
             <Link
-              to="services"
+              to="pricingplans"
               spy={true}
               smooth={true}
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Services
+              Pricing
             </Link>
             <Link
-              to="doctors"
+              to="contact"
               spy={true}
               smooth={true}
               duration={500}
               className=" hover:text-hoverColor transition-all cursor-pointer"
             >
-              Doctors
-            </Link>
-            <Link
-              to="blog"
-              spy={true}
-              smooth={true}
-              duration={500}
-              className=" hover:text-hoverColor transition-all cursor-pointer"
-            >
-              Blog
+              Book Appointment
             </Link>
           </nav>
 
@@ -94,7 +102,7 @@ const Navbar = () => {
 
           {showForm && <Contact closeForm={closeForm} />}
 
-          <div className=" lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             {menu ? (
               <AiOutlineClose size={28} onClick={handleChange} />
             ) : (
@@ -103,9 +111,8 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className={`${
-            menu ? "translate-x-0" : "-translate-x-full"
-          } lg:hidden flex flex-col absolute bg-backgroundColor text-white left-0 top-16 font-semibold text-2xl text-center pt-8 pb-4 gap-8 w-full h-fit transition-transform duration-300`}
+          className={`${menu ? "translate-x-0" : "-translate-x-full"
+            } lg:hidden flex flex-col absolute bg-backgroundColor text-white left-0 top-14 font-semibold text-lg text-center pt-8 pb-4 gap-4 w-full h-fit transition-transform duration-300`}
         >
           <Link
             to="home"
@@ -118,6 +125,26 @@ const Navbar = () => {
             Home
           </Link>
           <Link
+            to="working"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className=" hover:text-hoverColor transition-all cursor-pointer"
+            onClick={closeMenu}
+          >
+            Working
+          </Link>
+          <Link
+            to="features"
+            spy={true}
+            smooth={true}
+            duration={500}
+            className=" hover:text-hoverColor transition-all cursor-pointer"
+            onClick={closeMenu}
+          >
+            Features
+          </Link>
+          <Link
             to="about"
             spy={true}
             smooth={true}
@@ -125,37 +152,27 @@ const Navbar = () => {
             className=" hover:text-hoverColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
-            About Us
+            About
           </Link>
           <Link
-            to="services"
+            to="pricingplans"
             spy={true}
             smooth={true}
             duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
-            Services
+            Pricing
           </Link>
           <Link
-            to="doctors"
+            to="contact"
             spy={true}
             smooth={true}
             duration={500}
             className=" hover:text-hoverColor transition-all cursor-pointer"
             onClick={closeMenu}
           >
-            Doctors
-          </Link>
-          <Link
-            to="blog"
-            spy={true}
-            smooth={true}
-            duration={500}
-            className=" hover:text-hoverColor transition-all cursor-pointer"
-            onClick={closeMenu}
-          >
-            Blog
+            Contact
           </Link>
 
           <div className=" lg:hidden">
@@ -163,7 +180,7 @@ const Navbar = () => {
               className="bg-brightColor text-white px-4 py-2 rounded-md hover:bg-hoverColor transition duration-300 ease-in-out"
               onClick={openForm}
             >
-              Contact Us
+              Book Appointment
             </button>
           </div>
         </div>
