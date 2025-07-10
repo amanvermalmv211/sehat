@@ -8,7 +8,6 @@ import About from "./components/About";
 import Contact from './components/Contact';
 import Solutions from "./components/Solutions";
 import PricingPlans from "./components/PricingPlan";
-// import Contact from "./models/Contact";
 
 const App = () => {
   return (
