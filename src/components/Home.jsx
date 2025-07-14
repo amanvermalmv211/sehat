@@ -1,19 +1,56 @@
 import img from "../assets/img/about.jpg";
 import AOS from 'aos';
 import "aos/dist/aos.css";
-import { useEffect } from "react";
-
+import { useEffect, useRef } from "react";
 
 const Home = () => {
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
-  return (
 
-    <section className="relative bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white min-h-screen flex items-center justify-center px-6">
-      <div className="absolute top-0 left-0 w-full h-full opacity-30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-500 via-transparent to-transparent"></div>
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let t = 0;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const gridSize = 40;
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = "rgba(0, 255, 255, 0.15)";
+      ctx.lineWidth = 1;
+
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        for (let x = 0; x < canvas.width; x += gridSize) {
+          const pulse = Math.sin((x + y + t) * 0.02) * 4;
+          ctx.beginPath();
+          ctx.rect(x + pulse, y + pulse, gridSize - 2, gridSize - 2);
+          ctx.stroke();
+        }
+      }
+
+      t += 1;
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => window.removeEventListener("resize", resize);
+  }, []);
+
+  return (
+    <div className="relative h-screen flex items-center p-8 pt-12 overflow-hidden bg-black text-cyan-300 font-sans">
+      <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
 
       <div className="relative z-10 flex flex-col lg:flex-row items-center max-w-7xl mx-auto py-16 gap-12">
         <div className="flex-1 w-full text-center lg:text-left">
@@ -42,7 +79,7 @@ const Home = () => {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
